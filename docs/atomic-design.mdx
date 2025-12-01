@@ -1,0 +1,291 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Atomic Design" />
+
+# Atomic Design
+
+DeutschlandApp uses **Atomic Design** methodology to organize UI components. This approach creates a hierarchical component structure that promotes reusability, consistency, and maintainability.
+
+## What is Atomic Design?
+
+Atomic Design is a methodology for creating design systems by breaking down interfaces into fundamental building blocks and combining them into increasingly complex components. Created by Brad Frost, it's inspired by chemistry where atoms combine to form molecules, which combine to form organisms.
+
+## Folder Structure
+
+All components are organized in `/src/components/` following this structure:
+
+```
+src/components/
+├── atoms/           # Basic building blocks
+├── molecules/       # Simple component groups
+└── organisms/       # Complex UI sections
+```
+
+### Component Organization
+
+Each component lives in its own folder named in **PascalCase** and contains these files:
+
+```
+ComponentName/
+├── index.tsx       # Component implementation
+├── style.css       # BEM-style CSS (imports design tokens)
+└── story.tsx       # Storybook story
+```
+
+Example:
+```
+Button/
+├── index.tsx
+├── style.css
+└── story.tsx
+```
+
+## The Three Levels
+
+### Atoms
+**Location:** `/src/components/atoms/`
+
+Atoms are the most basic UI elements that cannot be broken down further. They serve as the foundation of the design system.
+
+**Current atoms:**
+- **[Button](src/components/atoms/Button/index.tsx)** - Interactive buttons with variants, sizes, icons, and loading states
+- **[Card](src/components/atoms/Card/index.tsx)** - Container for content with optional image and actions
+- **[Dropdown](src/components/atoms/Dropdown/index.tsx)** - Select dropdown for choosing options
+- **[TextField](src/components/atoms/TextField/index.tsx)** - Text input field with label and error states
+
+**Characteristics:**
+- Self-contained and highly reusable
+- Accept props for configuration
+- No dependencies on other components (except other atoms in rare cases)
+- Examples: buttons, inputs, labels, icons
+
+**Example - Button atom:**
+```tsx
+import Button from '@/components/atoms/Button';
+
+<Button variant="primary" size="md">
+  Click me
+</Button>
+```
+
+---
+
+### Molecules
+**Location:** `/src/components/molecules/`
+
+Molecules are simple groups of atoms that function together as a unit. They combine basic elements to create more meaningful UI patterns.
+
+**Current molecules:**
+- **[CityCard](src/components/molecules/CityCard/index.tsx)** - Displays city information using Card atom
+- **[ServiceCard](src/components/molecules/ServiceCard/index.tsx)** - Shows service details using Card and Button atoms
+
+**Characteristics:**
+- Composed of multiple atoms
+- Create more complex, reusable UI patterns
+- Handle specific use cases
+- Examples: form fields with labels, search bars, card components
+
+**Example - ServiceCard molecule:**
+```tsx
+import ServiceCard from '@/components/molecules/ServiceCard';
+import RestaurantIcon from '@fortawesome/fontawesome-free/svgs/solid/utensils.svg?react';
+
+<ServiceCard
+  icon={RestaurantIcon}
+  title="Bella Italia"
+  category="Restaurant"
+  rating={4.5}
+  reviewCount={127}
+  location="Berlin Mitte"
+  availability="Heute verfügbar"
+  imageUrl="https://picsum.photos/seed/restaurant/400/300"
+  onBook={() => console.log('Book')}
+  onDetails={() => console.log('Details')}
+/>
+```
+
+This molecule internally uses:
+- **Card atom** for the container
+- **Button atoms** for actions
+- Design tokens for styling
+
+---
+
+### Organisms
+**Location:** `/src/components/organisms/`
+
+Organisms are complex UI components composed of molecules, atoms, or other organisms. They form distinct sections of an interface.
+
+**Current organisms:**
+- **[Navigation](src/components/organisms/Navigation/index.tsx)** - Site header with logo, links, and CTA button
+- **[Hero](src/components/organisms/Hero/index.tsx)** - Large hero section with heading, description, and actions
+- **[FeatureSection](src/components/organisms/FeatureSection/index.tsx)** - Section displaying multiple features
+- **[Footer](src/components/organisms/Footer/index.tsx)** - Site footer with links and information
+
+**Characteristics:**
+- Composed of molecules and atoms
+- Form distinct sections of the interface
+- Can be complex and context-specific
+- Examples: headers, footers, card grids, hero sections
+
+**Example - Navigation organism:**
+```tsx
+import Navigation from '@/components/organisms/Navigation';
+import Button from '@/components/atoms/Button';
+
+<Navigation
+  links={[
+    { href: '/', label: 'Home' },
+    { href: '/berlin', label: 'Berlin' },
+    { href: '/hamburg', label: 'Hamburg' }
+  ]}
+  ctaButton={
+    <Button variant="primary" size="sm">
+      Anmelden
+    </Button>
+  }
+/>
+```
+
+This organism internally uses:
+- Next.js **Link** component
+- **Button atom** for the CTA
+- Design tokens for layout and styling
+
+---
+
+## Component Guidelines
+
+### 1. Naming Convention
+- **Folders and files:** PascalCase (e.g., `Button`, `ServiceCard`, `Navigation`)
+- **CSS classes:** BEM notation in kebab-case (e.g., `button`, `service-card`, `navigation`)
+
+### 2. File Structure
+Every component must have:
+- **`index.tsx`** - Default export of the component
+- **`style.css`** - BEM-style CSS using design tokens
+- **`story.tsx`** - Storybook story for documentation and testing
+
+### 3. CSS & Design Tokens
+- Use BEM methodology: `block__element--modifier`
+- Block name matches component name in kebab-case
+- Always use CSS variables from design tokens ([src/styles/tokens.css](src/styles/tokens.css))
+
+Example BEM structure for Button:
+```css
+.button { }                    /* Block */
+.button__icon { }              /* Element */
+.button__content { }           /* Element */
+.button--primary { }           /* Modifier */
+.button--loading { }           /* Modifier */
+.button__icon--left { }        /* Element modifier */
+```
+
+### 4. TypeScript
+- Use `type` over `interface`
+- Export all prop types
+- Use explicit imports: `import type { ReactNode } from 'react'`
+- Arrow function syntax
+
+### 5. Reusability First
+Before creating a new component:
+1. Check if an existing atom can be used
+2. Check if an existing molecule can be extended
+3. Only create new components when necessary
+4. Extract duplicated code into reusable components
+
+### 6. Icon Usage
+Icons are imported from Font Awesome using the `svgr` plugin:
+
+```tsx
+import ChevronRightIcon from '@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg?react';
+import MapIcon from '@fortawesome/fontawesome-free/svgs/regular/map.svg?react';
+
+// Use as React components
+<ChevronRightIcon className="icon" />
+<MapIcon className="icon--large" />
+```
+
+Available icon styles:
+- `/svgs/solid/` - Solid icons
+- `/svgs/regular/` - Regular (outline) icons
+- `/svgs/brands/` - Brand icons
+
+---
+
+## Benefits of This Approach
+
+### 🔄 Reusability
+Components can be used across different pages and contexts. A Button atom is used in multiple molecules and organisms.
+
+### 🎨 Consistency
+Shared atoms ensure consistent UI patterns throughout the app. All buttons look and behave the same.
+
+### 🧪 Testability
+Isolated components are easier to test and document in Storybook.
+
+### 🔧 Maintainability
+Changes to atoms automatically propagate to all molecules and organisms using them.
+
+### 📚 Documentation
+Clear hierarchy makes the codebase easier to understand for new developers.
+
+### ⚡ Development Speed
+Building new features is faster when you can compose existing components.
+
+---
+
+## Building New Components
+
+### When to Create an Atom
+- You need a new basic UI element (button style, input type, etc.)
+- The element will be reused across multiple molecules/organisms
+- It has no dependencies on other components
+
+### When to Create a Molecule
+- You're combining 2-3 atoms for a specific pattern
+- The pattern will be reused in multiple places
+- It serves a specific business purpose (e.g., CityCard, ServiceCard)
+
+### When to Create an Organism
+- You're building a major section of the UI
+- It combines multiple molecules and atoms
+- It's context-specific (e.g., Navigation, Hero, Footer)
+
+---
+
+## Example: Building a Feature
+
+Let's say we want to add a rating system. Here's how we'd approach it using Atomic Design:
+
+### 1. Start with Atoms
+```tsx
+// atoms/StarIcon/index.tsx
+// A simple star icon component
+```
+
+### 2. Build a Molecule
+```tsx
+// molecules/RatingDisplay/index.tsx
+import StarIcon from '../../atoms/StarIcon';
+
+// Combines multiple StarIcon atoms to show a rating
+```
+
+### 3. Use in Organisms
+```tsx
+// organisms/ReviewSection/index.tsx
+import RatingDisplay from '../../molecules/RatingDisplay';
+
+// Uses RatingDisplay molecule in a larger review section
+```
+
+This hierarchical approach ensures each component has a single responsibility and can be reused throughout the application.
+
+---
+
+## Resources
+
+- [Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/)
+- [Design Tokens Documentation](/?path=/docs/design-system-design-tokens--docs)
+- [Storybook Component Library](/?path=/story/)

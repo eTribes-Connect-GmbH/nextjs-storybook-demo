@@ -1,0 +1,342 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design Tokens" />
+
+# Design Tokens
+
+Design tokens are the foundational building blocks of our design system. They define the visual design language of the DeutschlandApp, ensuring consistency across all components and pages.
+
+## Location
+
+All design tokens are stored as CSS custom properties in:
+
+**[src/styles/tokens.css](../src/styles/tokens.css)**
+
+This file is imported globally and makes all tokens available throughout the application.
+
+## Exporting from Figma
+
+We use the **[Export Variables](https://www.figma.com/community/plugin/1382804904426179542/export-variables-css-scss-tailwind)** Figma plugin to export design variables from Figma as CSS variable definitions.
+
+To update tokens:
+1. Open the Figma design file
+2. Run the "Export Variables" plugin
+3. Select CSS format
+4. Copy the exported CSS variables
+5. Update `src/styles/tokens.css` with the new values
+
+## Available Tokens
+
+### Typography
+
+#### Font Family
+- `--font-family`: 'Baloo 2 Variable', system-ui
+
+#### Font Sizes
+
+- `--font-size-xs` — 0.75rem (12px)
+- `--font-size-sm` — 0.875rem (14px)
+- `--font-size-base` — 1rem (16px)
+- `--font-size-lg` — 1.125rem (18px)
+- `--font-size-xl` — 1.25rem (20px)
+- `--font-size-2xl` — 1.5rem (24px)
+- `--font-size-3xl` — 1.875rem (30px)
+- `--font-size-4xl` — 2.25rem (36px)
+- `--font-size-5xl` — 3rem (48px)
+
+#### Font Weights
+
+- `--font-weight-light` — 300
+- `--font-weight-normal` — 400
+- `--font-weight-medium` — 500
+- `--font-weight-semibold` — 600
+- `--font-weight-bold` — 700
+
+#### Line Heights
+
+- `--line-height-tight` — 1.25
+- `--line-height-normal` — 1.5
+- `--line-height-relaxed` — 1.75
+
+---
+
+### Colors
+
+#### Primary Colors
+Our teal/cyan primary color palette with 11 shades (50-950):
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+  {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(shade => (
+    <div key={shade} style={{ textAlign: 'center' }}>
+      <div style={{
+        backgroundColor: `var(--color-primary-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}>
+        <strong>{shade}</strong>
+        {shade === 900 && <div>(main)</div>}
+      </div>
+    </div>
+  ))}
+</div>
+
+#### Neutral/Gray Colors
+Neutral color palette for text, borders, and backgrounds:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+  {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(shade => (
+    <div key={shade} style={{ textAlign: 'center' }}>
+      <div style={{
+        backgroundColor: `var(--color-neutral-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}>
+        <strong>{shade}</strong>
+      </div>
+    </div>
+  ))}
+</div>
+
+#### Semantic Colors
+Colors with specific meanings:
+
+**Success** (Green)
+<div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+  {[50, 500, 700].map(shade => (
+    <div key={shade} style={{ textAlign: 'center', flex: 1 }}>
+      <div style={{
+        backgroundColor: `var(--color-success-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}><strong>{shade}</strong></div>
+    </div>
+  ))}
+</div>
+
+**Warning** (Orange)
+<div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+  {[50, 500, 700].map(shade => (
+    <div key={shade} style={{ textAlign: 'center', flex: 1 }}>
+      <div style={{
+        backgroundColor: `var(--color-warning-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}><strong>{shade}</strong></div>
+    </div>
+  ))}
+</div>
+
+**Error** (Red)
+<div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+  {[50, 500, 700].map(shade => (
+    <div key={shade} style={{ textAlign: 'center', flex: 1 }}>
+      <div style={{
+        backgroundColor: `var(--color-error-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}><strong>{shade}</strong></div>
+    </div>
+  ))}
+</div>
+
+**Info** (Blue)
+<div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', marginBottom: '2rem' }}>
+  {[50, 500, 700].map(shade => (
+    <div key={shade} style={{ textAlign: 'center', flex: 1 }}>
+      <div style={{
+        backgroundColor: `var(--color-info-${shade})`,
+        height: '60px',
+        borderRadius: '4px',
+        border: '1px solid #e5e7eb'
+      }} />
+      <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}><strong>{shade}</strong></div>
+    </div>
+  ))}
+</div>
+
+#### Surface Colors
+Application-level colors for backgrounds, text, and borders:
+
+- `--color-background` — Main background color
+- `--color-surface` — Surface/card background
+- `--color-surface-secondary` — Secondary surface background
+- `--color-text-primary` — Primary text color
+- `--color-text-secondary` — Secondary text color
+- `--color-text-tertiary` — Tertiary text color
+- `--color-border` — Default border color
+- `--color-border-hover` — Border color on hover
+
+---
+
+### Spacing
+
+Consistent spacing scale based on 4px increments:
+
+- `--spacing-0` — 0 (0px)
+- `--spacing-1` — 0.25rem (4px)
+- `--spacing-2` — 0.5rem (8px)
+- `--spacing-3` — 0.75rem (12px)
+- `--spacing-4` — 1rem (16px)
+- `--spacing-5` — 1.25rem (20px)
+- `--spacing-6` — 1.5rem (24px)
+- `--spacing-8` — 2rem (32px)
+- `--spacing-10` — 2.5rem (40px)
+- `--spacing-12` — 3rem (48px)
+- `--spacing-16` — 4rem (64px)
+- `--spacing-20` — 5rem (80px)
+- `--spacing-24` — 6rem (96px)
+
+---
+
+### Border Radius
+
+- `--radius-none` — 0 (0px) — No rounding
+- `--radius-sm` — 0.125rem (2px) — Subtle rounding
+- `--radius-base` — 0.25rem (4px) — Default
+- `--radius-md` — 0.375rem (6px) — Medium
+- `--radius-lg` — 0.5rem (8px) — Large
+- `--radius-xl` — 0.75rem (12px) — Extra large
+- `--radius-2xl` — 1rem (16px) — 2x extra large
+- `--radius-full` — 9999px — Pills, circles
+
+---
+
+### Shadows
+
+Elevation system using box shadows:
+
+- `--shadow-sm` — Subtle lift
+- `--shadow-base` — Default elevation
+- `--shadow-md` — Medium elevation
+- `--shadow-lg` — Large elevation
+- `--shadow-xl` — Extra large elevation
+- `--shadow-2xl` — Maximum elevation
+- `--shadow-inner` — Inset shadow
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '2rem', marginTop: '1rem', marginBottom: '2rem' }}>
+  {['sm', 'base', 'md', 'lg', 'xl', '2xl'].map(size => (
+    <div key={size} style={{ textAlign: 'center' }}>
+      <div style={{
+        backgroundColor: 'white',
+        height: '80px',
+        borderRadius: '8px',
+        boxShadow: `var(--shadow-${size})`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <strong>{size}</strong>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+### Z-Index
+
+Layering system for overlapping elements:
+
+- `--z-index-dropdown` — 1000 — Dropdown menus
+- `--z-index-sticky` — 1020 — Sticky elements
+- `--z-index-fixed` — 1030 — Fixed elements
+- `--z-index-modal-backdrop` — 1040 — Modal backdrops
+- `--z-index-modal` — 1050 — Modal dialogs
+- `--z-index-popover` — 1060 — Popovers
+- `--z-index-tooltip` — 1070 — Tooltips
+
+---
+
+### Transitions
+
+Timing functions for animations:
+
+- `--transition-fast` — 150ms cubic-bezier(0.4, 0, 0.2, 1) — Quick interactions
+- `--transition-base` — 200ms cubic-bezier(0.4, 0, 0.2, 1) — Default
+- `--transition-slow` — 300ms cubic-bezier(0.4, 0, 0.2, 1) — Smooth animations
+
+---
+
+### Breakpoints
+
+Responsive design breakpoints (for reference in JavaScript):
+
+- `--breakpoint-sm` — 640px
+- `--breakpoint-md` — 768px
+- `--breakpoint-lg` — 1024px
+- `--breakpoint-xl` — 1280px
+- `--breakpoint-2xl` — 1536px
+
+---
+
+### Container Widths
+
+Maximum container widths at each breakpoint:
+
+- `--container-sm` — 640px
+- `--container-md` — 768px
+- `--container-lg` — 1024px
+- `--container-xl` — 1280px
+- `--container-2xl` — 1536px
+
+---
+
+### Opacity
+
+Standard opacity values:
+
+- `--opacity-0` — 0
+- `--opacity-10` — 0.1
+- `--opacity-20` — 0.2
+- `--opacity-30` — 0.3
+- `--opacity-40` — 0.4
+- `--opacity-50` — 0.5
+- `--opacity-60` — 0.6
+- `--opacity-70` — 0.7
+- `--opacity-80` — 0.8
+- `--opacity-90` — 0.9
+- `--opacity-100` — 1
+
+---
+
+## Usage
+
+All tokens are available as CSS custom properties. Use them in your component styles:
+
+```css
+.my-component {
+  /* Typography */
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+
+  /* Colors */
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+
+  /* Spacing */
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+
+  /* Effects */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.my-component:hover {
+  border-color: var(--color-border-hover);
+}
+```
