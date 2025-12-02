@@ -84,26 +84,3 @@ export const Clickable: Story = {
     children: sampleContent,
   },
 };
-
-export const WithImage: Story = {
-  args: {
-    variant: 'elevated',
-    padding: 'none',
-    hoverable: true,
-    children: (
-      <div>
-        <img
-          src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
-          alt="Restaurant"
-          style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px 12px 0 0' }}
-        />
-        <div style={{ padding: '16px' }}>
-          <h3 style={{ margin: '0 0 8px 0', fontSize: '18px', fontWeight: 600 }}>
-            Restaurant Name
-          </h3>
-          <p style={{ margin: 0, color: '#6b7280' }}>A great place to eat in Berlin</p>
-        </div>
-      </div>
-    ),
-  },
-};

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import Card from '../../atoms/Card';
 import './style.css';
 
 export type ContentCardProps = {
@@ -52,13 +53,19 @@ const ContentCard = ({
 
   if (href) {
     return (
-      <Link href={href} className="content-card">
-        {content}
-      </Link>
+      <Card padding="none" hoverable className="content-card">
+        <Link href={href} className="content-card__link">
+          {content}
+        </Link>
+      </Card>
     );
   }
 
-  return <div className="content-card">{content}</div>;
+  return (
+    <Card padding="none" className="content-card">
+      {content}
+    </Card>
+  );
 };
 
 export default ContentCard;
