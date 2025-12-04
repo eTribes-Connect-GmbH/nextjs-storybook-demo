@@ -1,0 +1,11 @@
+.section {
+  padding: var(--spacing-20) var(--spacing-6);
+}
+
+.section--primary {
+  background-color: var(--color-surface-primary);
+}
+
+.section--secondary {
+  background-color: var(--color-surface-secondary);
+}

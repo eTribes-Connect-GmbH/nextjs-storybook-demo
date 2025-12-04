@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Button from '@/components/atoms/Button';
+import Container from '@/components/atoms/Container';
+import Section from '@/components/atoms/Section';
+import Grid from '@/components/atoms/Grid';
 import ContentCard from '@/components/molecules/ContentCard';
+import SectionHeader from '@/components/molecules/SectionHeader';
 import Hero from '@/components/organisms/Hero';
 import FeatureSection from '@/components/organisms/FeatureSection';
 import ChevronRightIcon from '@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg?react';
@@ -13,13 +17,13 @@ import TreeIcon from '@fortawesome/fontawesome-free/svgs/solid/tree.svg?react';
 
 export const metadata: Metadata = {
   title: 'Berlin',
-  description: 'Entdecke Berlin - die pulsierende Hauptstadt mit einzigartigen Restaurants, Clubs, Museen und Sehenswürdigkeiten. Von historischen Monumenten bis zu moderner Street Art.',
+  description:
+    'Entdecke Berlin - die pulsierende Hauptstadt mit einzigartigen Restaurants, Clubs, Museen und Sehenswürdigkeiten. Von historischen Monumenten bis zu moderner Street Art.',
   keywords: ['Berlin', 'Hauptstadt', 'Restaurants', 'Hotels', 'Bars', 'Clubs', 'Museen', 'Sehenswürdigkeiten', 'Kultur']
 };
 
 const BerlinPage = () => (
   <>
-
     <Hero
       title="Entdecke Berlin"
       subtitle="Die Hauptstadt"
@@ -38,7 +42,6 @@ const BerlinPage = () => (
         </>
       }
     />
-
     <FeatureSection
       title="Was Berlin zu bieten hat"
       subtitle="Kategorien"
@@ -46,69 +49,72 @@ const BerlinPage = () => (
         {
           icon: UtensilsIcon,
           title: 'Restaurants',
-          description: 'Von Currywurst bis Sterneküche - Berlins vielfältige Gastronomie begeistert.',
+          description: 'Von Currywurst bis Sterneküche - Berlins vielfältige Gastronomie begeistert.'
         },
         {
           icon: HotelIcon,
           title: 'Hotels',
-          description: 'Vom Boutique-Hotel bis zur Design-Unterkunft in allen Kiezen.',
+          description: 'Vom Boutique-Hotel bis zur Design-Unterkunft in allen Kiezen.'
         },
         {
           icon: GlassIcon,
           title: 'Bars & Clubs',
-          description: 'Das legendäre Berliner Nachtleben - von Underground bis Rooftop-Bar.',
+          description: 'Das legendäre Berliner Nachtleben - von Underground bis Rooftop-Bar.'
         },
         {
           icon: MuseumIcon,
           title: 'Kultur',
-          description: 'Weltklasse-Museen, Theater und Galerien an jeder Ecke.',
+          description: 'Weltklasse-Museen, Theater und Galerien an jeder Ecke.'
         },
         {
           icon: BuildingIcon,
           title: 'Sehenswürdigkeiten',
-          description: 'Brandenburger Tor, Reichstag, East Side Gallery und mehr.',
+          description: 'Brandenburger Tor, Reichstag, East Side Gallery und mehr.'
         },
         {
           icon: TreeIcon,
           title: 'Parks',
-          description: 'Grüne Oasen wie Tiergarten, Tempelhofer Feld und Mauerpark.',
-        },
+          description: 'Grüne Oasen wie Tiergarten, Tempelhofer Feld und Mauerpark.'
+        }
       ]}
     />
-
-    <section style={{ padding: 'var(--spacing-20) var(--spacing-6)', backgroundColor: 'var(--color-surface-secondary)' }}>
-      <div style={{ maxWidth: 'var(--container-xl)', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-12)' }}>
-          <p style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', color: 'var(--color-primary-700)', margin: '0 0 var(--spacing-3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Top-Empfehlungen
-          </p>
-          <h2 style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 'var(--font-weight-bold)', color: 'var(--color-text-primary)', margin: 0 }}>
-            Beliebte Orte in Berlin
-          </h2>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-6)' }}>
+    <Section variant="secondary">
+      <Container>
+        <SectionHeader title="Beliebte Orte in Berlin" subtitle="Top-Empfehlungen" />
+        <Grid>
           <ContentCard
             title="Restaurant zur goldenen Zeit"
             description="Moderne deutsche Küche mit regionalen Zutaten in gemütlicher Atmosphäre."
             imageUrl="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
-            actions={<Button variant="outline" size="sm">Reservieren</Button>}
+            actions={
+              <Button variant="outline" size="sm">
+                Reservieren
+              </Button>
+            }
           />
           <ContentCard
             title="Berghain"
             description="Weltberühmter Techno-Club in ehemaliger Industriehalle."
             imageUrl="https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
-            actions={<Button variant="outline" size="sm">Details</Button>}
+            actions={
+              <Button variant="outline" size="sm">
+                Details
+              </Button>
+            }
           />
           <ContentCard
             title="Hotel Adlon Kempinski"
             description="Luxushotel am Brandenburger Tor mit legendärer Geschichte."
             imageUrl="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
-            actions={<Button variant="outline" size="sm">Buchen</Button>}
+            actions={
+              <Button variant="outline" size="sm">
+                Buchen
+              </Button>
+            }
           />
-        </div>
-      </div>
-    </section>
-
+        </Grid>
+      </Container>
+    </Section>
     <FeatureSection
       title="Berlins Kieze entdecken"
       subtitle="Stadtteile"
@@ -116,20 +122,20 @@ const BerlinPage = () => (
       features={[
         {
           title: 'Mitte',
-          description: 'Das historische Zentrum mit den wichtigsten Sehenswürdigkeiten.',
+          description: 'Das historische Zentrum mit den wichtigsten Sehenswürdigkeiten.'
         },
         {
           title: 'Kreuzberg',
-          description: 'Multikulti, Street Art und alternatives Lebensgefühl.',
+          description: 'Multikulti, Street Art und alternatives Lebensgefühl.'
         },
         {
           title: 'Prenzlauer Berg',
-          description: 'Charmante Altbauten, Cafés und Familienfreundlichkeit.',
+          description: 'Charmante Altbauten, Cafés und Familienfreundlichkeit.'
         },
         {
           title: 'Friedrichshain',
-          description: 'Jung, lebendig und perfekt für Nachtschwärmer.',
-        },
+          description: 'Jung, lebendig und perfekt für Nachtschwärmer.'
+        }
       ]}
     />
   </>

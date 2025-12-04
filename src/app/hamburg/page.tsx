@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Button from '@/components/atoms/Button';
+import Container from '@/components/atoms/Container';
+import Section from '@/components/atoms/Section';
+import Grid from '@/components/atoms/Grid';
 import ContentCard from '@/components/molecules/ContentCard';
+import SectionHeader from '@/components/molecules/SectionHeader';
 import Hero from '@/components/organisms/Hero';
 import FeatureSection from '@/components/organisms/FeatureSection';
 import ChevronRightIcon from '@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg?react';
@@ -19,7 +23,6 @@ export const metadata: Metadata = {
 
 const HamburgPage = () => (
   <>
-
     <Hero
       title="Hamburg - Tor zur Welt"
       subtitle="Die Hansestadt"
@@ -38,7 +41,6 @@ const HamburgPage = () => (
         </>
       }
     />
-
     <FeatureSection
       title="Was Hamburg zu bieten hat"
       subtitle="Kategorien"
@@ -75,18 +77,10 @@ const HamburgPage = () => (
         },
       ]}
     />
-
-    <section style={{ padding: 'var(--spacing-20) var(--spacing-6)', backgroundColor: 'var(--color-surface-secondary)' }}>
-      <div style={{ maxWidth: 'var(--container-xl)', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-12)' }}>
-          <p style={{ fontSize: 'var(--font-size-lg)', fontWeight: 'var(--font-weight-semibold)', color: 'var(--color-primary-700)', margin: '0 0 var(--spacing-3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Top-Empfehlungen
-          </p>
-          <h2 style={{ fontSize: 'var(--font-size-4xl)', fontWeight: 'var(--font-weight-bold)', color: 'var(--color-text-primary)', margin: 0 }}>
-            Beliebte Orte in Hamburg
-          </h2>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--spacing-6)' }}>
+    <Section variant="secondary">
+      <Container>
+        <SectionHeader title="Beliebte Orte in Hamburg" subtitle="Top-Empfehlungen" />
+        <Grid>
           <ContentCard
             title="Fischereihafen Restaurant"
             description="Frischer Fisch direkt aus dem Hafen in maritimer Atmosphäre."
@@ -105,10 +99,9 @@ const HamburgPage = () => (
             imageUrl="https://images.pexels.com/photos/12606673/pexels-photo-12606673.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
             actions={<Button variant="outline" size="sm">Buchen</Button>}
           />
-        </div>
-      </div>
-    </section>
-
+        </Grid>
+      </Container>
+    </Section>
     <FeatureSection
       title="Hamburgs Stadtteile entdecken"
       subtitle="Viertel"
