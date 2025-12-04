@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 
 <Meta title="Design Tokens" />
 
@@ -10,7 +10,7 @@ Design tokens are the foundational building blocks of our design system. They de
 
 All design tokens are stored as CSS custom properties in:
 
-**[src/styles/tokens.css](../src/styles/tokens.css)**
+**src/styles/tokens.css**
 
 This file is imported globally and makes all tokens available throughout the application.
 
@@ -76,7 +76,6 @@ Our teal/cyan primary color palette with 11 shades (50-950):
       }} />
       <div style={{ fontSize: '0.75rem', marginTop: '0.5rem' }}>
         <strong>{shade}</strong>
-        {shade === 900 && <div>(main)</div>}
       </div>
     </div>
   ))}
@@ -167,14 +166,14 @@ Colors with specific meanings:
 #### Surface Colors
 Application-level colors for backgrounds, text, and borders:
 
-- `--color-background` — Main background color
-- `--color-surface` — Surface/card background
-- `--color-surface-secondary` — Secondary surface background
-- `--color-text-primary` — Primary text color
-- `--color-text-secondary` — Secondary text color
-- `--color-text-tertiary` — Tertiary text color
-- `--color-border` — Default border color
-- `--color-border-hover` — Border color on hover
+- `--color-background` — Main background color (#ffffff)
+- `--color-surface` — Surface/card background (#ffffff)
+- `--color-surface-secondary` — Secondary surface background (#f9fafb)
+- `--color-text-primary` — Primary text color (#111827)
+- `--color-text-secondary` — Secondary text color (#6b7280)
+- `--color-text-tertiary` — Tertiary text color (#9ca3af)
+- `--color-border` — Default border color (#e5e7eb)
+- `--color-border-hover` — Border color on hover (#d1d5db)
 
 ---
 

@@ -115,8 +115,4 @@
   .hero__description {
     font-size: var(--font-size-lg);
   }
-
-  .hero__actions {
-    flex-direction: column;
-  }
 }

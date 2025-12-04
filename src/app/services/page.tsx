@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Button from '@/components/atoms/Button';
 import Container from '@/components/atoms/Container';
 import Section from '@/components/atoms/Section';
@@ -37,9 +38,11 @@ const ServicesPage = () => (
           <Button variant="primary" size="lg" icon={ChevronRightIcon} iconPosition="right">
             Service finden
           </Button>
-          <Button variant="secondary" size="lg">
-            Städte durchsuchen
-          </Button>
+          <Link href="/#staedte">
+            <Button variant="secondary" size="lg">
+              Städte entdecken
+            </Button>
+          </Link>
         </>
       }
     />

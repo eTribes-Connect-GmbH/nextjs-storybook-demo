@@ -28,7 +28,7 @@ Each component lives in its own folder named in **PascalCase** and contains thes
 ```
 ComponentName/
 ├── index.tsx       # Component implementation
-├── style.css       # BEM-style CSS (imports design tokens)
+├── style.css       # BEM-style CSS (uses design tokens)
 └── story.tsx       # Storybook story
 ```
 
@@ -48,10 +48,13 @@ Button/
 Atoms are the most basic UI elements that cannot be broken down further. They serve as the foundation of the design system.
 
 **Current atoms:**
-- **[Button](src/components/atoms/Button/index.tsx)** - Interactive buttons with variants, sizes, icons, and loading states
-- **[Card](src/components/atoms/Card/index.tsx)** - Container for content with optional image and actions
-- **[Dropdown](src/components/atoms/Dropdown/index.tsx)** - Select dropdown for choosing options
-- **[TextField](src/components/atoms/TextField/index.tsx)** - Text input field with label and error states
+- **Button** - Interactive buttons with variants, sizes, icons, and loading states
+- **Card** - Container for content with optional image and actions
+- **Container** - Centered container with configurable max-width
+- **Dropdown** - Select dropdown for choosing options
+- **Grid** - Responsive auto-fit grid layout
+- **Section** - Section wrapper with consistent padding and background variants
+- **TextField** - Text input field with label and error states
 
 **Characteristics:**
 - Self-contained and highly reusable
@@ -76,8 +79,10 @@ import Button from '@/components/atoms/Button';
 Molecules are simple groups of atoms that function together as a unit. They combine basic elements to create more meaningful UI patterns.
 
 **Current molecules:**
-- **[CityCard](src/components/molecules/CityCard/index.tsx)** - Displays city information using Card atom
-- **[ServiceCard](src/components/molecules/ServiceCard/index.tsx)** - Shows service details using Card and Button atoms
+- **CityCard** - Displays city information using Card atom
+- **ContentCard** - Flexible content card with image, highlights, and actions
+- **SectionHeader** - Centered section heading with optional subtitle
+- **ServiceCard** - Shows service details using Card and Button atoms
 
 **Characteristics:**
 - Composed of multiple atoms
@@ -117,10 +122,10 @@ This molecule internally uses:
 Organisms are complex UI components composed of molecules, atoms, or other organisms. They form distinct sections of an interface.
 
 **Current organisms:**
-- **[Navigation](src/components/organisms/Navigation/index.tsx)** - Site header with logo, links, and CTA button
-- **[Hero](src/components/organisms/Hero/index.tsx)** - Large hero section with heading, description, and actions
-- **[FeatureSection](src/components/organisms/FeatureSection/index.tsx)** - Section displaying multiple features
-- **[Footer](src/components/organisms/Footer/index.tsx)** - Site footer with links and information
+- **Navigation** - Site header with logo, links, and CTA button
+- **Hero** - Large hero section with heading, description, and actions
+- **FeatureSection** - Section displaying multiple features
+- **Footer** - Site footer with links and information
 
 **Characteristics:**
 - Composed of molecules and atoms

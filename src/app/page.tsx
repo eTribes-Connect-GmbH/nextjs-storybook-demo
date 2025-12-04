@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Button from '@/components/atoms/Button';
 import Container from '@/components/atoms/Container';
 import Section from '@/components/atoms/Section';
@@ -32,12 +33,16 @@ const LandingPage = () => (
       overlay={true}
       actions={
         <>
-          <Button variant="primary" size="lg" icon={ChevronRightIcon} iconPosition="right">
-            Städte entdecken
-          </Button>
-          <Button variant="secondary" size="lg">
-            Services ansehen
-          </Button>
+          <Link href="#staedte">
+            <Button variant="primary" size="lg" icon={ChevronRightIcon} iconPosition="right">
+              Städte entdecken
+            </Button>
+          </Link>
+          <Link href="/services">
+            <Button variant="secondary" size="lg">
+              Services ansehen
+            </Button>
+          </Link>
         </>
       }
     />
@@ -64,7 +69,7 @@ const LandingPage = () => (
       ]}
     />
 
-    <Section variant="secondary">
+    <Section variant="secondary" id="staedte">
       <Container>
         <SectionHeader title="Entdecke beliebte Städte" subtitle="Städte" />
         <Grid>
