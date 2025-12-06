@@ -17,14 +17,13 @@ import UserIcon from '@fortawesome/fontawesome-free/svgs/solid/user-doctor.svg?r
 import ChevronRightIcon from '@fortawesome/fontawesome-free/svgs/solid/chevron-right.svg?react';
 
 export const metadata: Metadata = {
-  title: 'Entdecke Deutschland',
-  description: 'Finde die besten Restaurants, Hotels, Bars und buche Termine bei Ärzten, Friseuren und mehr in Berlin, Hamburg, München und Köln.',
+  description:
+    'Finde die besten Restaurants, Hotels, Bars und buche Termine bei Ärzten, Friseuren und mehr in Berlin, Hamburg, München und Köln.',
   keywords: ['Deutschland', 'Städte', 'Restaurants', 'Hotels', 'Bars', 'Termine', 'Services']
 };
 
 const LandingPage = () => (
   <>
-
     <Hero
       title="Entdecke Deutschland"
       subtitle="Willkommen bei DeutschlandApp"
@@ -54,18 +53,18 @@ const LandingPage = () => (
         {
           icon: MapIcon,
           title: 'Entdecken',
-          description: 'Finde die besten Orte in deiner Stadt - von Restaurants bis zu versteckten Geheimtipps.',
+          description: 'Finde die besten Orte in deiner Stadt - von Restaurants bis zu versteckten Geheimtipps.'
         },
         {
           icon: CalendarIcon,
           title: 'Buchen',
-          description: 'Reserviere direkt über die App Tische in Restaurants oder Termine bei Services.',
+          description: 'Reserviere direkt über die App Tische in Restaurants oder Termine bei Services.'
         },
         {
           icon: StarIcon,
           title: 'Bewerten',
-          description: 'Teile deine Erfahrungen und hilf anderen bei der Entscheidung.',
-        },
+          description: 'Teile deine Erfahrungen und hilf anderen bei der Entscheidung.'
+        }
       ]}
     />
 
@@ -80,7 +79,11 @@ const LandingPage = () => (
             imageUrl="https://images.pexels.com/photos/1963082/pexels-photo-1963082.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
             href="/berlin"
             highlights={['Kultur', 'Geschichte', 'Nachtleben']}
-            actions={<Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">Entdecken</Button>}
+            actions={
+              <Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">
+                Entdecken
+              </Button>
+            }
           />
           <ContentCard
             title="Hamburg"
@@ -89,7 +92,11 @@ const LandingPage = () => (
             imageUrl="https://images.pexels.com/photos/28298008/pexels-photo-28298008.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
             href="/hamburg"
             highlights={['Hafen', 'Musik', 'Alster']}
-            actions={<Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">Entdecken</Button>}
+            actions={
+              <Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">
+                Entdecken
+              </Button>
+            }
           />
           <ContentCard
             title="München"
@@ -98,7 +105,11 @@ const LandingPage = () => (
             imageUrl="https://images.pexels.com/photos/4213372/pexels-photo-4213372.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
             href="/munich"
             highlights={['Biergärten', 'Museen', 'Alpen']}
-            actions={<Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">Entdecken</Button>}
+            actions={
+              <Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">
+                Entdecken
+              </Button>
+            }
           />
           <ContentCard
             title="Köln"
@@ -107,7 +118,11 @@ const LandingPage = () => (
             imageUrl="https://images.pexels.com/photos/161849/cologne-dom-night-architecture-161849.jpeg?auto=compress&cs=tinysrgb&h=960&w=1440"
             href="/cologne"
             highlights={['Dom', 'Karneval', 'Rhein']}
-            actions={<Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">Entdecken</Button>}
+            actions={
+              <Button variant="outline" size="sm" fullWidth icon={ChevronRightIcon} iconPosition="right">
+                Entdecken
+              </Button>
+            }
           />
         </Grid>
       </Container>
@@ -121,23 +136,23 @@ const LandingPage = () => (
         {
           icon: UtensilsIcon,
           title: 'Restaurants',
-          description: 'Top-bewertete Restaurants für jeden Geschmack.',
+          description: 'Top-bewertete Restaurants für jeden Geschmack.'
         },
         {
           icon: HotelIcon,
           title: 'Hotels',
-          description: 'Komfortable Unterkünfte in bester Lage.',
+          description: 'Komfortable Unterkünfte in bester Lage.'
         },
         {
           icon: UserIcon,
           title: 'Ärzte',
-          description: 'Schnelle Terminvereinbarung bei Fachärzten.',
+          description: 'Schnelle Terminvereinbarung bei Fachärzten.'
         },
         {
           icon: CalendarIcon,
           title: 'Termine',
-          description: 'Buche Friseur, Mechaniker und mehr.',
-        },
+          description: 'Buche Friseur, Mechaniker und mehr.'
+        }
       ]}
     />
   </>
